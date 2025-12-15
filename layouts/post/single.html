@@ -6,9 +6,9 @@
 <strong>Publish date: </strong>{{ .PublishDate.Format $dateFormat }}
 <br>
 {{ with .Params.tags }}
-  <strong>Tags: </strong>
+  <strong>{{ i18n "tags" }}: </strong>
   {{ range . }}
-    <a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+    <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
   {{ end }}
 {{ end }}
 

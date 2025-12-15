@@ -1,0 +1,32 @@
+[tags]
+other = "Tags"
+
+[categories]
+other = "Categories"
+
+[series]
+other = "Series"
+
+[tutorials]
+other = "Tutorials"
+
+[read_more]
+other = "Read more"
+
+[published]
+other = "Published"
+
+[updated]
+other = "Updated"
+
+[next]
+other = "Next"
+
+[previous]
+other = "Previous"
+
+[first_page]
+other = "First page"
+
+[last_page]
+other = "Last page"

@@ -2,11 +2,23 @@
 {{ if gt $pag.TotalPages 1 -}}
 
   <div class="row flex-center margin-top-large">
- 
+
   {{ with $pag.First -}}
-    <a href="{{ .URL }}" class="paper-btn">&laquo;&laquo;</a>
+    <a
+      href="{{ .URL }}"
+      class="paper-btn"
+      title="{{ i18n "first_page" }}"
+      aria-label="{{ i18n "first_page" }}"
+    >&laquo;&laquo;</a>
   {{ end -}}
-    <a {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }} class="paper-btn{{ if not $pag.HasPrev }} disabled{{ end }}">&laquo;</a>
+
+    <a
+      {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }}
+      class="paper-btn {{ if not $pag.HasPrev }} disabled{{ end }}"
+      title="{{ i18n "previous_page" }}"
+      aria-label="{{ i18n "previous_page" }}"
+    >&laquo;</a>
+
   {{- $ellipsed := false -}}
   {{- $shouldEllipse := false -}}
   {{- range $pag.Pagers -}}
@@ -27,19 +39,27 @@
 
   {{- else if $shouldEllipse }}
 
-    <button>&nbsp;&hellip;&nbsp;</button>
+    <button type="button" aria-hidden="true">&nbsp;&hellip;&nbsp;</button>
 
   {{- end -}}
   {{- end }}
 
-    <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} class="paper-btn {{ if not $pag.HasNext }} disabled{{ end }}">&raquo;</a>
+    <a
+      {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }}
+      class="paper-btn {{ if not $pag.HasNext }} disabled{{ end }}"
+      title="{{ i18n "next_page" }}"
+      aria-label="{{ i18n "next_page" }}"
+    >&raquo;</a>
 
   {{- with $pag.Last }}
-
-    <a href="{{ .URL }}" class="paper-btn">&raquo;&raquo;</a>
-
+    <a
+      href="{{ .URL }}"
+      class="paper-btn"
+      title="{{ i18n "last_page" }}"
+      aria-label="{{ i18n "last_page" }}"
+    >&raquo;&raquo;</a>
   {{- end }}
-  </div>
 
+  </div>
 
 {{ end }}

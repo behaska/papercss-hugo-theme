@@ -13,9 +13,36 @@
     </button>
     <div class="collapsible-body">
       <ul class="inline">
-      {{ range .Site.Menus.nav }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-      {{ end }}
+        
+        {{ range .Site.Menus.nav }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+
+        {{/* Language switcher (minimal) */}}
+        {{ if gt (len .Site.Languages) 1 }}
+          <span class="lang-switcher">
+            <select aria-label="Language" onchange="if (this.value) window.location.href=this.value;">
+              {{ $current := .Site.Language.Lang }}
+              {{ range .Site.Languages }}
+                {{ $lang := .Lang }}
+
+                {{/* URL: translation of current page if exists, else language home */}}
+                {{ $langSite := index (where $.Sites "Language.Lang" $lang) 0 }}
+                {{ $url := $langSite.Home.RelPermalink }}
+
+                {{ with (index (where $.AllTranslations "Language.Lang" $lang) 0) }}
+                  {{ $url = .RelPermalink }}
+                {{ end }}
+
+                <option value="{{ $url }}" {{ if eq $lang $current }}selected{{ end }}>
+                  {{ .LanguageName }}
+                </option>
+              {{ end }}
+            </select>
+          </span>
+        {{ end }}
+
+        
       </ul>
     </div>
   </div>
