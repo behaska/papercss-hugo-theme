@@ -24,12 +24,16 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" type="text/css" href="{{ "css/paper.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+
+  {{/* PaperCSS: use minified in production */}} {{ $paperCss := "css/paper.css"
+  }} {{ if hugo.IsProduction }} {{ $paperCss = "css/paper.min.css" }} {{ end }}
+  <link rel="stylesheet" type="text/css" href="{{ $paperCss | relURL }}" />
 
   {{ $customCssPath := "css/custom.css" }}
   {{ $customCss:= resources.Get $customCssPath | resources.ExecuteAsTemplate $customCssPath . }}
   <link rel="stylesheet" type="text/css" href="{{ $customCss.RelPermalink }}">
-  
+
   {{ if hugo.IsProduction }}
     {{ template "_internal/google_analytics.html" . }}
   {{ end }}
