@@ -1,0 +1,26 @@
+[tags]
+other = "Tags"
+
+[categories]
+other = "Catégories"
+
+[series]
+other = "Séries"
+
+[tutorials]
+other = "Tutoriels"
+
+[read_more]
+other = "Lire la suite"
+
+[published]
+other = "Publié"
+
+[updated]
+other = "Mis à jour"
+
+[next]
+other = "Suivant"
+
+[previous]
+other = "Précédent"
