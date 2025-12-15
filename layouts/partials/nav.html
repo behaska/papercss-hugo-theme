@@ -1,6 +1,24 @@
 <nav class="border split-nav">
   <div class="nav-brand">
-    <h3><a href="{{ .Site.Params.navTitleLink | default "/" }}">{{ .Site.Title }}</a></h3>
+    {{ $home := .Site.Home.RelPermalink }}
+    {{ $title := .Site.Title }}
+    {{ $logo := .Site.Params.navLogo }}
+    {{ $alt := .Site.Params.navLogoAlt | default $title }}
+    {{ $h := .Site.Params.navLogoHeight | default 28 }}
+
+    <h3>
+      <a href="{{ .Site.Params.navTitleLink | default $home }}" class="nav-brand-link">
+        {{ if $logo }}
+        <img
+                src="{{ $logo | relURL }}"
+                alt="{{ $alt }}"
+                class="nav-brand-logo"
+                style="height: {{ $h }}px; width: auto;"
+        >
+        {{ end }}
+        <span class="nav-brand-title">{{ $title }}</span>
+      </a>
+    </h3>
   </div>
   <div class="collapsible">
     <input id="collapsible1" type="checkbox" name="collapsible1">
