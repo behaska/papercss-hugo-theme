@@ -24,3 +24,9 @@ other = "Suivant"
 
 [previous]
 other = "Précédent"
+
+[first_page]
+other = "Première page"
+
+[last_page]
+other = "Dernière page"
