@@ -1,14 +1,8 @@
-⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+# PaperCSS Hugo Theme (maintained fork)
 
-**WARNING:** This repo is no longer maintained. It's archived and read-only.
+This repository is a maintained fork of the original **papercss-hugo-theme** created by **zwbetz-gh**.
 
-⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-
-# PaperCSS
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3e3a0d5d-854f-45f2-9e30-e8a86907956a/deploy-status)](https://app.netlify.com/sites/papercss-hugo-theme/deploys)
-
-A Hugo theme made with PaperCSS, the less formal CSS framework.
+The upstream project is archived and no longer actively maintained. I’m maintaining this fork to keep the theme usable with recent Hugo versions and to continue making incremental improvements while preserving the spirit and simplicity of the original theme.
 
 ## Table of contents
 
@@ -24,6 +18,7 @@ A Hugo theme made with PaperCSS, the less formal CSS framework.
 - [Disable summary for a blog post](#disable-summary-for-a-blog-post)
 - [Getting help](#getting-help)
 - [Credits](#credits)
+- [License](#license)
 
 ## Demo
 
@@ -31,49 +26,58 @@ https://papercss-hugo-theme.netlify.com/
 
 ## Minimum Hugo version
 
-Hugo version `0.81.0` or higher is required. View the [Hugo releases](https://github.com/gohugoio/hugo/releases) and download the binary for your OS.
+Hugo **Extended** is recommended.
 
 ## Installation
 
 From the root of your site:
 
-```
-git submodule add https://github.com/zwbetz-gh/papercss-hugo-theme.git themes/papercss-hugo-theme
+```bash
+git submodule add https://github.com/behaska/papercss-hugo-theme.git themes/papercss-hugo-theme
+git submodule update --init --recursive
+````
+
+Then set the theme in your Hugo config:
+
+```toml
+theme = "papercss-hugo-theme"
 ```
 
 ## Updating
 
 From the root of your site:
 
-```
-git submodule update --remote --merge
+```bash
+git submodule update --remote --merge themes/papercss-hugo-theme
+git add themes/papercss-hugo-theme
+git commit -m "chore: bump papercss-hugo-theme"
 ```
 
 ## Run example site
 
 From the root of `themes/papercss-hugo-theme/exampleSite`:
 
-```
+```bash
 hugo server --themesDir ../..
 ```
 
 ## Configuration
 
-Copy `config.yaml` from the [`exampleSite`](https://github.com/zwbetz-gh/papercss-hugo-theme/tree/master/exampleSite), then edit as desired. 
+Copy `config.yaml` from the `exampleSite`, then edit as desired.
 
 ## Favicons
 
-Upload your image to [RealFaviconGenerator](https://realfavicongenerator.net/) then copy-paste the generated favicon files under `static`. 
+Upload your image to RealFaviconGenerator, then copy-paste the generated favicon files under `static`.
 
 ## Shortcodes
 
-See the [full list of supported shortcodes](https://papercss-hugo-theme.netlify.com/papercss-shortcodes/).
+See the example site for the full list of supported shortcodes.
 
 ## Disable toc for a blog post
 
 Blog posts that have two or more subheadings (`<h2>`s) automatically get a table of contents. To disable this set `toc` to `false`. For example:
 
-```
+```yaml
 ---
 title: "My page with a few headings"
 toc: false
@@ -84,7 +88,7 @@ toc: false
 
 The homepage blog post listing shows a summary for each post. To disable this for an individual post set `show_summary` to `false`. For example:
 
-```
+```yaml
 ---
 title: "My page with some stellar content"
 show_summary: false
@@ -93,8 +97,14 @@ show_summary: false
 
 ## Getting help
 
-If you run into an issue that isn't answered by this documentation or the [`exampleSite`](https://github.com/zwbetz-gh/papercss-hugo-theme/tree/master/exampleSite), then visit the [Hugo forum](https://discourse.gohugo.io/). The folks there are helpful and friendly. **Before** asking your question, be sure to read the [requesting help guidelines](https://discourse.gohugo.io/t/requesting-help/9132).
+If you run into an issue that isn't answered by this documentation or the `exampleSite`, then visit the Hugo forum. The folks there are helpful and friendly. Before asking your question, be sure to read the forum’s requesting help guidelines.
 
 ## Credits
 
-Thank you to [Rhyne Vlaservich](https://www.vlaservich.com/) for creating [PaperCSS](https://www.getpapercss.com/), and all the  [contributors](https://github.com/papercss/papercss/graphs/contributors).
+Thank you to [Rhyne Vlaservich](https://www.vlaservich.com/) for creating [PaperCSS](https://www.getpapercss.com/), and all the contributors.
+
+## License
+
+MIT. See [LICENSE](LICENSE) for details.
+
+
