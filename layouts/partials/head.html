@@ -20,6 +20,20 @@
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="theme-color" content="#ffffff" />
 
+  {{/* Fonts CSS (Hugo Pipes) */}}
+  {{ $fontsCssPath := "css/fonts.css" }}
+  {{ $fontsCss := resources.Get $fontsCssPath }}
+
+  {{ if not $fontsCss }}
+  {{ errorf "fonts.css introuvable via Hugo Pipes: assets/%s (pas dans static, pas de slash au début)" $fontsCssPath }}
+  {{ end }}
+
+  {{ if hugo.IsProduction }}
+  {{ $fontsCss = $fontsCss | resources.Minify | resources.Fingerprint }}
+  {{ end }}
+
+  <link rel="stylesheet" href="{{ $fontsCss.RelPermalink }}" />
+
   {{/* PaperCSS: use minified in production */}} {{ $paperCss := "css/paper.css"
   }} {{ if hugo.IsProduction }} {{ $paperCss = "css/paper.min.css" }} {{ end }}
   <link rel="stylesheet" type="text/css" href="{{ $paperCss | relURL }}" />
