@@ -1,10 +1,47 @@
-{{ if not (.Site.Params.hideFooter | default false) }}
-<footer class="site-footer">
-    <p>
-        Powered by
-        <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>
-        and
+{{- if not (.Site.Params.hideFooter | default false) -}}
+<footer class="site-footer border">
+    <div class="site-footer__left">
+    <span>
+      Powered by
+        <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a>
+      and
         <a href="https://github.com/behaska/papercss-hugo-theme/blob/master/README.md" target="_blank" rel="noopener noreferrer">PaperCSS Theme</a>.
-    </p>
+    </span>
+    </div>
+
+    {{- $lic := .Site.Params.footerLicense -}}
+    {{- if and $lic ($lic.enabled | default false) -}}
+    <div class="site-footer__right">
+        {{- $inner := "" -}}
+
+        {{- /* Image si fournie */ -}}
+        {{- if $lic.image -}}
+        {{- $img := printf `<img class="footer-license__img" src="%s" alt="%s" />`
+        ($lic.image | relURL)
+        (default "License" $lic.alt)
+        -}}
+        {{- $inner = printf `%s` $img -}}
+        {{- end -}}
+
+        {{- /* Texte si fourni (Markdown autorisé) */ -}}
+        {{- if $lic.text -}}
+        {{- $txt := printf `<span class="footer-license__text">%s</span>` ($lic.text | markdownify) -}}
+        {{- if $inner -}}
+        {{- $inner = printf `%s %s` $inner $txt -}}
+        {{- else -}}
+        {{- $inner = printf `%s` $txt -}}
+        {{- end -}}
+        {{- end -}}
+
+        {{- /* Wrap lien si fourni */ -}}
+        {{- if $lic.link -}}
+        <a class="footer-license__link" href="{{ $lic.link }}" rel="noopener" target="_blank">
+            {{ $inner | safeHTML }}
+        </a>
+        {{- else -}}
+        {{ $inner | safeHTML }}
+        {{- end -}}
+    </div>
+    {{- end -}}
 </footer>
-{{ end }}
+{{- end -}}
