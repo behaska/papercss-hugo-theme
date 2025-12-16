@@ -1,0 +1,38 @@
+name: Release on tag
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Build archives
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          NAME="papercss-hugo-theme-${TAG}"
+          mkdir -p dist
+
+          # Archive exactement le contenu versionné par le tag (propre, sans .git)
+          git archive --format=tar --prefix="${NAME}/" "${TAG}" | gzip -9 > "dist/${NAME}.tar.gz"
+          git archive --format=zip --prefix="${NAME}/" "${TAG}" -o "dist/${NAME}.zip"
+
+      - name: Create / Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.tar.gz
+            dist/*.zip
+          generate_release_notes: true
