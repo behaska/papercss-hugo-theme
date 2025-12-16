@@ -185,7 +185,7 @@ A small footer can be enabled by default with:
 
       Powered by Hugo and PaperCSS
 
-To disable it,
+To disable it (in blog config file, not in theme config file  ) :
 
 ```toml
 params:

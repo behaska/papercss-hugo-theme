@@ -27,6 +27,7 @@ params:
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: Jan 2, 2006
   navTitleLink: /
+  hideFooter: false # Set to true to hide the footer
 
 menu:
   nav:
