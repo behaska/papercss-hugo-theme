@@ -2,7 +2,9 @@
 
 This repository is a maintained fork of the original **papercss-hugo-theme** created by **zwbetz-gh**.
 
-The upstream project is archived and no longer actively maintained. I’m maintaining this fork to keep the theme usable with recent Hugo versions and to continue making incremental improvements while preserving the spirit and simplicity of the original theme.
+The upstream project is archived and no longer actively maintained. I’m maintaining this fork to keep the theme usable
+with recent Hugo versions and to continue making incremental improvements while preserving the spirit and simplicity of
+the original theme.
 
 ## Table of contents
 
@@ -110,9 +112,9 @@ params:
   navLogoHeight: 28
 ```
 
- - `navLogo`: path to your logo (absolute site path recommended)
- - `navLogoAlt`: accessible alt text (defaults to site title if omitted)
- - `navLogoHeight`: recommended height in pixels (keeps nav compact)
+- `navLogo`: path to your logo (absolute site path recommended)
+- `navLogoAlt`: accessible alt text (defaults to site title if omitted)
+- `navLogoHeight`: recommended height in pixels (keeps nav compact)
 
 ### 3) Styling
 
@@ -159,6 +161,7 @@ languages:
           url: /fr/tags/
           weight: 2
 ```
+
 ### 1) Language switcher in the navbar
 
 When you have **2+ languages**, the theme displays a minimal language switcher in the navigation bar.
@@ -168,12 +171,26 @@ It links to the current page translation when available, otherwise it falls back
 
 You can use any **Hugo-supported structure**, for example:
 
- - content/post/my-article.md with language-specific front matter
- - or split by language:
-   - content/en/post/my-article.md
-   - content/fr/post/my-article.md
+- content/post/my-article.md with language-specific front matter
+- or split by language:
+    - content/en/post/my-article.md
+    - content/fr/post/my-article.md
 
-See [Hugo documentation](https://gohugo.io/documentation/) for **translation** linkage (translationKey, same filename, etc.).
+See [Hugo documentation](https://gohugo.io/documentation/) for **translation** linkage (translationKey, same filename,
+etc.).
+
+## Footer
+
+A small footer can be enabled by default with:
+
+      Powered by Hugo and PaperCSS
+
+To disable it,
+
+```toml
+params:
+   hideFooter: true
+```
 
 ## Shortcodes
 
@@ -181,7 +198,8 @@ See the example site for the full list of supported shortcodes.
 
 ## Disable toc for a blog post
 
-Blog posts that have two or more subheadings (`<h2>`s) automatically get a table of contents. To disable this set `toc` to `false`. For example:
+Blog posts that have two or more subheadings (`<h2>`s) automatically get a table of contents. To disable this set `toc`
+to `false`. For example:
 
 ```yaml
 ---
@@ -192,7 +210,8 @@ toc: false
 
 ## Disable summary for a blog post
 
-The homepage blog post listing shows a summary for each post. To disable this for an individual post set `show_summary` to `false`. For example:
+The homepage blog post listing shows a summary for each post. To disable this for an individual post set `show_summary`
+to `false`. For example:
 
 ```yaml
 ---
@@ -203,11 +222,14 @@ show_summary: false
 
 ## Getting help
 
-If you run into an issue that isn't answered by this documentation or the `exampleSite`, then visit the Hugo forum. The folks there are helpful and friendly. Before asking your question, be sure to read the forum’s requesting help guidelines.
+If you run into an issue that isn't answered by this documentation or the `exampleSite`, then visit the Hugo forum. The
+folks there are helpful and friendly. Before asking your question, be sure to read the forum’s requesting help
+guidelines.
 
 ## Credits
 
-Thank you to [Rhyne Vlaservich](https://www.vlaservich.com/) for creating [PaperCSS](https://www.getpapercss.com/), and all the contributors.
+Thank you to [Rhyne Vlaservich](https://www.vlaservich.com/) for creating [PaperCSS](https://www.getpapercss.com/), and
+all the contributors.
 
 ## License
 
