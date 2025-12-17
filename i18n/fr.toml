@@ -11,7 +11,10 @@ other = "Séries"
 other = "Tutoriels"
 
 [read_more]
-other = "Lire la suite"
+  other= "Read more →"
+
+[read_article]
+  other= "Read the article →"
 
 [published]
 other = "Publié"
