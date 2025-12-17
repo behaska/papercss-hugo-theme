@@ -1,0 +1,36 @@
+{{ define "main" }}
+<main>
+    <h1>{{ .Title }}</h1>
+
+    {{ $all := .RegularPagesRecursive.ByPublishDate.Reverse }}
+    {{ $latest := first 2 $all }}
+    {{ $rest := after 2 $all }}
+    {{ $p := .Paginate $rest }}
+
+    {{ if eq $p.PageNumber 1 }}
+    {{ .Content }}
+
+    <hr />
+
+    <section class="blog-latest">
+        <h2>{{ i18n "latest_posts" }}</h2>
+        {{ range $latest }}
+        {{ partial "post-excerpt.html" . }}
+        <hr class="post-separator">
+        {{ end }}
+    </section>
+    {{ end }}
+
+    <section class="blog-older">
+        <h2>{{ i18n "older_posts" }} ({{ len $rest }})</h2>
+
+        {{ range $p.Pages }}
+        {{ partial "post-excerpt.html" . }}
+        <hr class="post-separator">
+        {{ end }}
+
+        {{ partial "pagination.html" . }}
+    </section>
+
+</main>
+{{ end }}

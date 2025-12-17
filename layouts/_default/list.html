@@ -1,31 +1,35 @@
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
-{{ .Content }}
 
-{{ $pages := .Pages }}
-{{ range $i, $p := $pages.ByPublishDate.Reverse }}
+{{ $p := .Paginate (.Pages.ByPublishDate.Reverse) }}
+
+{{ if eq $p.PageNumber 1 }}
+{{ .Content }}
+{{ end }}
+
+{{ range $i, $page := $p.Pages }}
 
 {{ if gt $i 0 }}
 <hr class="post-separator">
 {{ end }}
 
 <article class="post-excerpt">
-  <h2 class="post-list {{ if ne $p.Params.show_summary false }}summary{{ end }}">
-    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+  <h2 class="post-list {{ if ne $page.Params.show_summary false }}summary{{ end }}">
+    <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
   </h2>
 
-  {{ if ne $p.Params.show_summary false }}
-  {{ $p.Summary }}
+  {{ if ne $page.Params.show_summary false }}
+  {{ $page.Summary }}
   {{ end }}
 
   <p class="read-more">
-    <a href="{{ $p.RelPermalink }}">
-      {{ if $p.Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
+    <a href="{{ $page.RelPermalink }}">
+      {{ if $page.Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
     </a>
   </p>
 </article>
-
 {{ end }}
 
+{{ partial "pagination.html" . }}
 {{ end }}

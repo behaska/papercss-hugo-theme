@@ -11,10 +11,10 @@ other = "Series"
 other = "Tutorials"
 
 [read_more]
-  other= "Lire la suite →"
+  other= "Read more →"
 
 [read_article]
-  other= "Lire l’article →"
+  other= "Read the article →"
 
 [published]
 other = "Published"
@@ -33,3 +33,9 @@ other = "First page"
 
 [last_page]
 other = "Last page"
+
+[latest_posts]
+other = "Latest posts"
+
+[older_posts]
+other = "Older posts"

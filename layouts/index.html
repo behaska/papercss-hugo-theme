@@ -1,33 +1,17 @@
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
-{{ .Content }}
 
 {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
 
+{{ if eq $paginator.PageNumber 1 }}
+{{ .Content }}
+{{ end }}
+
 {{ range $i, $p := $paginator.Pages.ByPublishDate.Reverse }}
-
-{{ if gt $i 0 }}
-<hr class="post-separator">
+{{ if gt $i 0 }}<hr class="post-separator">{{ end }}
+{{ partial "post-excerpt.html" $p }}
 {{ end }}
 
-<article class="post-excerpt">
-  <h2 class="post-list {{ if ne $p.Params.show_summary false }}summary{{ end }}">
-    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
-  </h2>
-
-  {{ if ne $p.Params.show_summary false }}
-  {{ $p.Summary }}
-  {{ end }}
-
-  <p class="read-more">
-    <a href="{{ $p.RelPermalink }}">
-      {{ if $p.Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
-    </a>
-  </p>
-</article>
-
-{{ end }}
-
-{{ template "partials/pagination.html" . }}
+{{ partial "pagination.html" . }}
 {{ end }}

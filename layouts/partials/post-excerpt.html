@@ -1,0 +1,15 @@
+<article class="post-excerpt">
+    <h2 class="post-list {{ if ne .Params.show_summary false }}summary{{ end }}">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+
+    {{ if ne .Params.show_summary false }}
+    {{ .Summary }}
+    {{ end }}
+
+    <p class="read-more">
+        <a href="{{ .RelPermalink }}">
+            {{ if .Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
+        </a>
+    </p>
+</article>
