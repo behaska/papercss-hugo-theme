@@ -2,15 +2,30 @@
 
 <h1>{{ .Title }}</h1>
 {{ .Content }}
+
 {{ $pages := .Pages }}
-{{ range $pages.ByPublishDate.Reverse }}
-  <h2 class="post-list {{ if ne .Params.show_summary false }}summary{{ end }}">
-    <a href="{{ .RelPermalink }}">
-      {{ .Title }}
-    </a>
-  </h2>
-  {{ if ne .Params.show_summary false }}
-    {{ .Summary }}
-  {{ end }}
+{{ range $i, $p := $pages.ByPublishDate.Reverse }}
+
+{{ if gt $i 0 }}
+<hr class="post-separator">
 {{ end }}
+
+<article class="post-excerpt">
+  <h2 class="post-list {{ if ne $p.Params.show_summary false }}summary{{ end }}">
+    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+  </h2>
+
+  {{ if ne $p.Params.show_summary false }}
+  {{ $p.Summary }}
+  {{ end }}
+
+  <p class="read-more">
+    <a href="{{ $p.RelPermalink }}">
+      {{ if $p.Truncated }}Lire la suite →{{ else }}Lire l’article →{{ end }}
+    </a>
+  </p>
+</article>
+
+{{ end }}
+
 {{ end }}

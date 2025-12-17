@@ -135,3 +135,7 @@ article .text-lead { font-size: 1.15rem; margin: 1rem 0; }
     background-image: none; /* évite le surlignage PaperCSS si tu veux propre */
 }
 
+hr { margin: 2rem 0; opacity: .35; }
+.post-separator { margin: 2rem 0; opacity: .85; }
+.read-more { margin-top: .75rem; }
+.post-excerpt { padding: .25rem 0; }

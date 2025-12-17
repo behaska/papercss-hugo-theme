@@ -3,19 +3,33 @@
 {{ $dateFormat := site.Params.dateFormat | default "2006-01-02" }}
 {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 
-{{ range $pages.ByPublishDate.Reverse }}
-<h2 class="post-list {{ if ne .Params.show_summary false }}summary{{ end }}">
-  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-</h2>
+{{ range $i, $p := $pages.ByPublishDate.Reverse }}
 
-<p class="post-meta">
-  <time datetime="{{ .PublishDate }}">{{ .PublishDate.Format $dateFormat }}</time>
-  {{ if gt .Lastmod .PublishDate }}
-  · mis à jour le <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format $dateFormat }}</time>
-  {{ end }}
-</p>
-
-{{ if ne .Params.show_summary false }}
-{{ .Summary }}
+{{ if gt $i 0 }}
+<hr class="post-separator">
 {{ end }}
+
+<article class="post-excerpt">
+  <h2 class="post-list {{ if ne $p.Params.show_summary false }}summary{{ end }}">
+    <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+  </h2>
+
+  <p class="post-meta">
+    <time datetime="{{ $p.PublishDate }}">{{ $p.PublishDate.Format $dateFormat }}</time>
+    {{ if gt $p.Lastmod $p.PublishDate }}
+    · mis à jour le <time datetime="{{ $p.Lastmod }}">{{ $p.Lastmod.Format $dateFormat }}</time>
+    {{ end }}
+  </p>
+
+  {{ if ne $p.Params.show_summary false }}
+  {{ $p.Summary }}
+  {{ end }}
+
+  <p class="read-more">
+    <a href="{{ $p.RelPermalink }}">
+      {{ if $p.Truncated }}Lire la suite →{{ else }}Lire l’article →{{ end }}
+    </a>
+  </p>
+</article>
+
 {{ end }}
