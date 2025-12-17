@@ -25,7 +25,7 @@ blockquote {
     font-style: italic;
 }
 
-/* post list */
+/* posts list */
 .post-list {
     font-size: 1.75em;
 }
@@ -34,7 +34,7 @@ blockquote {
     margin-bottom: 0.1em;
 }
 
-/* post single */
+/* posts single */
 .post-title {
     margin-bottom: 0.1em;
 }

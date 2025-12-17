@@ -1,0 +1,8 @@
+<div style="font-size:12px; opacity:.6; margin: 1rem 0;">
+    <h3>Show Template</h3>
+    kind=<code>{{ .Kind }}</code>
+    type=<code>{{ .Type }}</code>
+    layout(frontmatter)=<code>{{ .Layout }}</code>
+    section=<code>{{ .Section }}</code>
+    file=<code>{{ with .File }}{{ .Path }}{{ else }}(no file){{ end }}</code>
+</div>

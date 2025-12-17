@@ -1,6 +1,20 @@
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
+
+{{/* N'afficher la meta date que pour les contenus "post/posts" */}}
+{{ if in (slice "post" "posts") .Section }}
+{{ $fmt := site.Params.dateFormat | default "2006-01-02" }}
+{{ $published := cond (not .PublishDate.IsZero) .PublishDate .Date }}
+
+<p class="post-meta">
+    Publié le <time datetime="{{ $published }}">{{ $published.Format $fmt }}</time>
+    {{ if gt .Lastmod $published }}
+    · Mis à jour le <time datetime="{{ .Lastmod }}">{{ .Lastmod.Format $fmt }}</time>
+    {{ end }}
+</p>
+{{ end }}
+
 {{ .Content }}
-  
+
 {{ end }}
