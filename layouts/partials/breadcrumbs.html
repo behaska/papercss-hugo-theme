@@ -1,0 +1,18 @@
+{{/* layouts/partials/breadcrumbs.html */}}
+{{ if not .IsHome }}
+<nav aria-label="Breadcrumb">
+
+    <ul class="breadcrumb border">
+        <li><a href="{{ site.Home.RelPermalink }}">{{ i18n "home" }}</a></li>
+
+        {{ range .Ancestors.Reverse }}
+        {{ if not .IsHome }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+        {{ end }}
+
+        <li aria-current="page">{{ .LinkTitle }}</li>
+    </ul>
+
+</nav>
+{{ end }}

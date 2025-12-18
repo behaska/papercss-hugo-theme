@@ -5,6 +5,8 @@
     <div class="container paper">
       {{ partial "nav.html" . }}
 
+      {{ partial "breadcrumbs.html" . }}
+
       <main>
         {{ block "main" . }}{{ end }}
       </main>

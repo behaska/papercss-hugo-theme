@@ -22,7 +22,7 @@
     {{ end }}
 
     <section class="blog-older">
-        <h2>{{ i18n "older_posts" }} ({{ len $rest }})</h2>
+        <h2>{{ i18n "older_posts" }} <span class="badge secondary">{{ len $rest }}</span></h2></h2>
 
         {{ range $p.Pages }}
         {{ partial "post-excerpt.html" . }}

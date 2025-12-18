@@ -1,4 +1,4 @@
-<article class="post-excerpt">
+<article class="paper container margin-bottom-large sm-3 col border border-2 border-primary shadow shadow-hover">
     <h2 class="post-list {{ if ne .Params.show_summary false }}summary{{ end }}">
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h2>
@@ -8,8 +8,8 @@
     {{ end }}
 
     <p class="read-more">
-        <a href="{{ .RelPermalink }}">
+        <button href="{{ .RelPermalink }}">
             {{ if .Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
-        </a>
+        </button>
     </p>
 </article>
