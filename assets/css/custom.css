@@ -229,7 +229,7 @@ main li > input[type="checkbox"] {
 .heading-anchor {
     margin-left: .5rem;
     text-decoration: none;
-    opacity: .25;
+    opacity: 0;
 }
 h1:hover .heading-anchor,
 h2:hover .heading-anchor,
@@ -237,7 +237,7 @@ h3:hover .heading-anchor,
 h4:hover .heading-anchor,
 h5:hover .heading-anchor,
 h6:hover .heading-anchor {
-    opacity: 1;
+    opacity: 0.25;
 }
 
 .heading-link {
