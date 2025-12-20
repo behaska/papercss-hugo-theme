@@ -1,0 +1,45 @@
+{{- /*
+paperchecklist
+Usage:
+{{< paperchecklist >}}
+- [x] Item 1 avec `code`
+- [ ] Item 2 avec un [lien](/foo)
+{{< /paperchecklist >}}
+
+Params:
+- disabled: "true" (default) | "false"
+*/ -}}
+
+{{- $disabled := .Get "disabled" | default "true" -}}
+{{- $raw := .Inner | strings.TrimSpace -}}
+{{- $lines := split $raw "\n" -}}
+
+<div class="paper-checklist">
+    {{- range $lines -}}
+    {{- $line := . | strings.TrimSpace -}}
+    {{- if eq $line "" -}}
+    {{- continue -}}
+    {{- end -}}
+
+    {{- /* Match - [ ] / - [x] / * [ ] / + [X] */ -}}
+    {{- if findRE `^[-*+]\s*\[[xX ]\]\s+` $line -}}
+    {{- $checked := (findRE `^[-*+]\s*\[[xX]\]\s+` $line) -}}
+    {{- $text := replaceRE `^[-*+]\s*\[[xX ]\]\s+` "" $line -}}
+
+    {{- /* Render inline markdown (code, links). markdownify wraps in <p> sometimes; strip it. */ -}}
+    {{- $html := $text | markdownify -}}
+    {{- $html = replaceRE `(?s)^<p>(.*)</p>\s*$` `$1` $html -}}
+
+    <label class="paper-check">
+        <input type="checkbox"
+               {{- if $checked -}} checked{{- end -}}
+               {{- if ne $disabled "false" -}} disabled{{- end -}}>
+        <span>{{ $html | safeHTML }}</span>
+    </label>
+
+    {{- else -}}
+    {{- /* Fallback: render any non-task lines as text */ -}}
+    <div class="paper-checklist-note">{{ $line | markdownify }}</div>
+    {{- end -}}
+    {{- end -}}
+</div>
