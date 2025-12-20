@@ -1,0 +1,6 @@
+{{- $id := .File.Path | default .RelPermalink -}}
+<div
+        data-lyket-type="updown"
+        data-lyket-namespace="{{ site.Params.lyket.namespace | default "blog" }}"
+data-lyket-id="{{ $id }}"
+></div>

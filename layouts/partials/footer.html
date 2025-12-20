@@ -9,6 +9,8 @@
     </span>
     </div>
 
+    {{ partial "lyket-script.html" . }}
+
     {{- $lic := .Site.Params.footerLicense -}}
     {{- if and $lic ($lic.enabled | default false) -}}
     <div class="site-footer__right">

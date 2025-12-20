@@ -1,0 +1,7 @@
+{{- with site.Params.lyket.apiKey -}}
+{{- $src := printf "https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=%s" . -}}
+{{- if site.Params.lyket.disableSessionId -}}
+{{- $src = printf "%s&disableSessionId" $src -}}
+{{- end -}}
+<script src="{{ $src }}"></script>
+{{- end -}}
