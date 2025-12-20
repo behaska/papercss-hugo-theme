@@ -206,11 +206,23 @@ main li > input[type="checkbox"] {
     display: inline-block;
 }
 
-.paper-checklist .paper-check {
-    display: block;
-    margin: .5rem 0;
+.paper-checklist .paper-check{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    margin: .5rem 2rem;
+    line-height: 0.5rem;
 }
 
-.paper-checklist .paper-check input[type="checkbox"] {
-    margin-right: .5rem;
+.paper-checklist .paper-check input[type="checkbox"]{
+    flex: 0 0 auto;
+    margin: 0;           /* évite les décalages */
+    display: inline-block;
 }
+
+.paper-checklist .paper-check span{
+    flex: 1 1 auto;
+    display: inline;     /* au cas où PaperCSS le force en block */
+}
+
