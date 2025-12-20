@@ -32,8 +32,8 @@ Params:
 
     <label class="paper-check">
         <input type="checkbox"
-               {{- if $checked -}} checked{{- end -}}
-               {{- if ne $disabled "false" -}} disabled{{- end -}}>
+               {{ if $checked }}checked{{ end }}
+               {{ if ne $disabled "false" }} disabled{{ end }}>
         <span>{{ $html | safeHTML }}</span>
     </label>
 
