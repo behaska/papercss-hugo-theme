@@ -39,3 +39,25 @@ other = "Derniers articles"
 
 [older_posts]
 other = "Articles plus anciens"
+
+[report_issue_button]
+other = "Signaler une erreur"
+
+[report_issue_title]
+other = "Bug: {{ .Title }}"
+
+[report_issue_body]
+other = """Page: {{ .Permalink }}
+Langue: {{ .Lang }}
+
+## Problème
+
+## Attendu
+
+## Contexte
+- Navigateur:
+- OS:
+"""
+
+[vote_helpful]
+other = "Utile ?"

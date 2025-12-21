@@ -2,16 +2,18 @@
 {{- if not $repo -}}
 {{- /* Pas de repo configuré => rien */ -}}
 {{- else -}}
-{{- $title := printf "Bug: %s" .Title -}}
-{{- $body := printf "Page: %s\n\n## Problème\n\n## Attendu\n\n## Contexte\n- Navigateur:\n- OS:\n" .Permalink -}}
 
-{{- $url := printf "https://github.com/%s/issues/new?title=%s&body=%s" $repo ($title | urlquery) ($body | urlquery) -}}
+{{- $issueTitle := i18n "report_issue_title" (dict "Title" .Title) -}}
+{{- $issueBody := i18n "report_issue_body" (dict "Permalink" .Permalink "Lang" site.Language.Lang) -}}
+
+{{- $url := printf "https://github.com/%s/issues/new?title=%s&body=%s" $repo ($issueTitle | urlquery) ($issueBody | urlquery) -}}
 
 {{- with site.Params.feedback.issue_template -}}
 {{- $url = printf "%s&template=%s" $url (. | urlquery) -}}
 {{- end -}}
 
 <a class="paper-btn" href="{{ $url }}" target="_blank" rel="noopener">
-    Signaler une erreur
+    {{- i18n "report_issue_button" -}}
 </a>
+
 {{- end -}}

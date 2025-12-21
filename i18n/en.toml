@@ -39,3 +39,25 @@ other = "Latest posts"
 
 [older_posts]
 other = "Older posts"
+
+[report_issue_button]
+other = "Report an issue"
+
+[report_issue_title]
+other = "Bug: {{ .Title }}"
+
+[report_issue_body]
+other = """Page: {{ .Permalink }}
+Language: {{ .Lang }}
+
+## Problem
+
+## Expected
+
+## Context
+- Browser:
+- OS:
+"""
+
+[vote_helpful]
+other = "Helpful?"

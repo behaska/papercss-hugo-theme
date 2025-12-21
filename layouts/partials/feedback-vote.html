@@ -1,6 +1,8 @@
-{{- $id := .File.Path | default .RelPermalink -}}
+{{- $raw := .File.Path | default (.RelPermalink | trim "/") -}}
+{{- $id := md5 $raw -}} {{/* 32 chars hex => safe */}}
+
 <div
         data-lyket-type="updown"
-        data-lyket-namespace="{{ site.Params.lyket.namespace | default "blog" }}"
+        data-lyket-namespace="{{ site.Params.lyket.namespace | default "herdev" }}"
 data-lyket-id="{{ $id }}"
 ></div>
