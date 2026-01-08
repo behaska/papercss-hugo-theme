@@ -26,10 +26,11 @@
   {{ end }}
 
   <p class="read-more">
-    <button href="{{ $p.RelPermalink }}">
+    <a class="paper-btn" href="{{ $p.RelPermalink }}">
       {{ if $p.Truncated }}{{ i18n "read_more" }}{{ else }}{{ i18n "read_article" }}{{ end }}
-    </button>
+    </a>
   </p>
+
 </article>
 
 {{ end }}
