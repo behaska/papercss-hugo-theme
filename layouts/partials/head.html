@@ -42,15 +42,8 @@
   $customCssPath | resources.ExecuteAsTemplate $customCssPath . }}
   <link rel="stylesheet" type="text/css" href="{{ $customCss.RelPermalink }}" />
 
-  {{ if hugo.IsProduction }} {{ template "partials/google_analytics.html" . }}
+  {{ if hugo.IsProduction }} {{ template "partials/analytics.html" . }}
   {{ end }} {{ $title := print .Title " | " .Site.Title }} {{ if .IsHome }} {{
   $title = .Site.Title }} {{ end }}
   <title>{{ $title }}</title>
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-SLgOEXUxKpM6eeyyfRHIt.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
-  </script>
-
 </head>
